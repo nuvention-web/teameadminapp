@@ -1,0 +1,28 @@
+<% include partials/head %>
+    <div class="ui middle aligned centered grid">
+        <div class="ten wide column">
+            <h2 class="ui center aligned">Log-in to your account</h2>
+            <div class="ui raised segment padded">
+                <form class="ui form" action="/login" method="post">
+                    <!-- <div class="field">
+                        <label>Username</label>
+                        <input type="text" name="username" placeholder="username">
+                    </div> -->
+                    <div class="field">
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="email">
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <input type="password" name="password" placeholder="password">
+                    </div>
+                    <button class="ui button centered" type="submit" value="Submit">Submit</button>
+                </form>
+            </div>
+            <div class="ui message center aligned">
+                New to us? <a href="/signup">Sign Up</a>
+            </div>
+        </div>
+    </div>
+    <script src="assets/main.js"></script>
+    <% include partials/scripts %>

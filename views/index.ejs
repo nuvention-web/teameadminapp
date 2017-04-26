@@ -1,0 +1,8 @@
+<% include partials/head %>
+    <% include partials/nav %>
+    <% if (errors) { %>
+  		<p class="error ui center aligned"><%= errors %></p>
+	<% } %>
+
+	<ng-view></ng-view>
+<% include partials/scripts %>

@@ -1,0 +1,156 @@
+/* @import url('https://fonts.googleapis.com/css?family=Open+Sans'); */
+
+body {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    top: 0;
+    position: absolute;
+    font-family: 'Open Sans', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+    padding: .25em;
+}
+
+p {
+    margin: 0;
+    font-size: 1em;
+    padding: .25em;
+}
+
+a {
+    text-decoration: none !important;
+    cursor: pointer !important;
+}
+
+
+/* 
+.card {
+	padding: .5em 1em 1em;
+	background-color: grey;
+	margin: 0;
+	height: 100%;
+	word-wrap: normal;
+}
+
+.card p {
+	font-size: .9em;
+}
+
+input.search {
+	font-size: 1em;
+	width: 85%;
+	line-height: 1.5;
+	padding: .25em .5em;
+	margin: 0;
+	border-radius: 10px;
+}
+
+input.search:focus, input.search:focus {
+	outline: none;
+} */
+
+.searchform {
+    font-size: 1.5em;
+}
+
+.searchform i {
+    width: 5%;
+    font-size: 1.5em;
+    padding: 0 .25em;
+    margin: 0;
+}
+
+.form-container {
+    border-radius: 5px;
+    background-color: #DBDBDB;
+    padding: 1em .5em;
+}
+
+.no-margin-bottom {
+    margin-bottom: 0 !important;
+}
+
+.nav-logo {
+    top: -1em;
+    display: block;
+    position: relative;
+}
+
+.nav-logo img {
+    height: 64px;
+    width: auto;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.no-padding-top-bottom {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.no-padding-sides {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+.menu .column .ui.image {
+    height: 2.85714286em;
+}
+
+.ui.menu {
+    border-radius: 0 !important;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.center {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.button.secondary .fa {
+    color: white;
+}
+
+.ui[class*="center aligned"] {
+    text-align: center;
+}
+
+.ui[class*="left aligned"] {
+    text-align: left;
+}
+
+.ui[class*="right aligned"] {
+    text-align: right;
+}
+
+.ui[class*="centered"] {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.error {
+    color: #DB2828;
+}

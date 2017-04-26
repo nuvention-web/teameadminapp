@@ -1,0 +1,99 @@
+<% include partials/head %>
+    <div class="ui middle aligned centered grid">
+        <div class="ten wide column">
+            <h2 class="ui center aligned">Sign Up</h2>
+            <% if (message != null) { %>
+                <div class="alert-danger">
+                    <%= message %>
+                </div>
+                <% } %>
+                    <div class="ui raised segment">
+                        <form class="ui form" action="/signup" method="post">
+                            <div class="field required">
+                                <label>Name</label>
+                                <div class="inline fields">
+                                    <div class="eight wide field">
+                                        <input type="text" name="firstname" placeholder="First Name">
+                                    </div>
+                                    <div class="eight wide field">
+                                        <input type="text" name="lastname" placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="required field">
+                                <label>Email</label>
+                                <input type="text" name="email" placeholder="Email">
+                            </div>
+                            <div class="required field">
+                                <label>Username</label>
+                                <input type="text" name="username" placeholder="username">
+                            </div>
+                            <div class="required field">
+                                <label>Password</label>
+                                <input type="password" name="password" placeholder="password">
+                            </div>
+                            <div class="equal width fields">
+                                <div class="field required">
+                                    <label>Graduation Year</label>
+                                    <input type="number" name="graduation" placeholder="ex: 2020">
+                                </div>
+                                <div class="field required">
+                                    <label>Birth Date</label>
+                                    <input type="date" name="birthday" placeholder="mm/dd/yyyy">
+                                </div>
+                                <div class="field required">
+                                    <label>Major</label>
+                                    <input type="text" name="birthday" placeholder="major">
+                                </div>
+                            </div>
+                            <div class="grouped fields required">
+                                <label for="school">School</label>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="school" checked="" tabindex="0" class="hidden">
+                                        <label>Weinberg</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="school" checked="" tabindex="0" class="hidden">
+                                        <label>McCormick</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="school" checked="" tabindex="0" class="hidden">
+                                        <label>SESP</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="school" checked="" tabindex="0" class="hidden">
+                                        <label>School of Communications</label>
+                                    </div>
+                                </div>
+                                <div class="field">
+                                    <div class="ui radio checkbox">
+                                        <input type="radio" name="school" checked="" tabindex="0" class="hidden">
+                                        <label>Medill</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ui hidden divider"></div>
+                            <div class="required inline field">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" tabindex="0" class="hidden">
+                                    <label>I agree to the terms and conditions</label>
+                                </div>
+                            </div>
+                            <div class="ui hidden divider"></div>
+                            <button class="ui button centered" type="submit" value="Submit">Submit</button>
+                        </form>
+                    </div>
+                    <div class="ui message center aligned">
+                        Already have an account? <a href="/login">Log In</a>
+                    </div>
+        </div>
+    </div>
+    <script src="assets/main.js"></script>
+    <% include partials/scripts %>

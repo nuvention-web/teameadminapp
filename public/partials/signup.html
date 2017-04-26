@@ -1,0 +1,90 @@
+<script type="text/javascript">
+$('.ui.form').form({
+    fields: {
+        name: {
+            identifier: 'name',
+            rules: [{
+                type: 'empty',
+                prompt: 'Please enter name.'
+            }]
+        },
+        email: {
+            identifier: 'email',
+            rules: [{
+                type: 'email',
+                prompt: 'Please enter a valid email address.'
+            }]
+        },
+        password: {
+            identifier: 'password',
+            rules: [{
+                type: 'empty',
+                prompt: 'Please enter a password'
+            }, {
+                type: 'minLength[6]',
+                prompt: 'Your password must be at least {ruleValue} characters'
+            }]
+        },
+        university: {
+            identifier: 'university',
+            rules: [{
+                type: 'empty',
+                prompt: 'Please select your university.'
+            }]
+        },
+        terms: {
+            identifier: 'terms',
+            rules: [{
+                type: 'checked',
+                prompt: 'You must agree to the terms and conditions'
+            }]
+        }
+    }
+});
+</script>
+<div class="ui middle aligned centered grid">
+    <div class="ten wide column">
+        <h2 class="ui center aligned">Sign Up</h2>
+        <div class="ui raised segment">
+            <form class="ui form" action="/signup" method="post">
+                <div class="field required">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="required field">
+                    <label>Email</label>
+                    <input type="text" name="email" placeholder="Email">
+                </div>
+                <div class="required field">
+                    <label>Password</label>
+                    <input type="password" name="password" placeholder="password">
+                </div>
+                <div class="field required">
+                    <label for="university">University</label>
+                    <div class="ui fluid search selection dropdown">
+                        <input type="hidden" name="university">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">University</div>
+                        <div class="menu">
+                            <div class="item" value="Northwestern University">Northwestern University</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="required inline field">
+                    <div class="ui checkbox">
+                        <input type="checkbox" name="terms" tabindex="0" class="hidden">
+                        <label>I agree to the terms and conditions</label>
+                    </div>
+                </div>
+                <div class="ui hidden divider"></div>
+                <div class="ui error message"></div>
+                <button class="ui button centered" type="submit" value="Submit">Submit</button>
+            </form>
+        </div>
+        <div class="ui message center aligned">
+            Already have an account? <a href="/login">Log In</a>
+        </div>
+    </div>
+</div>
+<script src="assets/main.js"></script>

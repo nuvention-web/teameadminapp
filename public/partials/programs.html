@@ -1,0 +1,110 @@
+<div class="ui container">
+    <div class="ui one column centered grid">
+        <div class="column">
+            <div class="ui action left icon input">
+                <i class="search icon"></i>
+                <input name="search" id="search_id" placeholder="Search..." type="text" ng-model="userInput" ng-keydown="applySearchEnter($event)" onkeydown="uniKeyCode(event)" autofocus="autofocus">
+                <div class="ui blue button" ng-click="applySearch()" onclick="trackFunction()">Search</div>
+                <br><div class="ui blue button" ng-click="clearing()">View All</div>
+                </div>
+        </div>
+    </div>
+</div>
+<div class="ui container">
+    <div class="ui three column grid">
+        <div class="ui shape column" ng-repeat="program in programs | filter: search" emit-last-repeater-element>
+            <div class="ui sides">
+                <div class="active side">
+                    <div class="ui special cards">
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <!-- <div class="ui mini list" ng-if="program.course_data != []">
+							<div class="item" ng-repeat="course in program.course_data | unique: 'course_id' | orderBy: 'course_id'">{{course.subject}} {{course.catalog_num}}: {{course.title}}
+							</div>
+						</div> -->
+                                        <div class="center">
+                                            <div class="ui secondary button">See Classes <i class="fa fa-caret-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="assets/images/wireframe/image-square.png">
+                            </div>
+                            <div class="content">
+                                <a class="header">{{program.program}}</a>
+                                <div class="meta">
+                                    <span class="group">{{program.location}}</span>
+                                </div>
+                                <div class="description">
+                                    <span ng-repeat="time in program.times">
+						<span ng-repeat="(day,hours) in time"> {{day}} </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <div class="right floated author">
+                                    <a class="flip-over">
+        
+        See courses <i class="fa fa-angle-right"></i>
+      </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side">
+                    <div class="ui card">
+                        <div class="content">
+                            <a class="header">Courses</a>
+                            <div class="description">
+                                <div class="ui mini list" ng-if="program.course_data != []">
+                                    <div class="item" ng-repeat="course in program.course_data | unique: 'course_id' | orderBy: 'course_id'">{{course.subject}} {{course.catalog_num}}: {{course.title}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <div class="right floated author">
+                                <a class="button flip-over">
+        
+        See courses <i class="fa fa-angle-right"></i>
+      </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/main.js"></script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-96553651-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<script>
+function trackFunction() {
+ga('send', {
+  hitType: 'event',
+  eventCategory: 'Search',
+  eventAction: 'Searching',
+  eventLabel: (document.getElementById("search_id").value).toLowerCase()
+});
+}
+
+function uniKeyCode(e) {
+    if (e.keyCode === 13)
+    {
+    	trackFunction();
+    }
+}
+</script>

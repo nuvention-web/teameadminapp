@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title><%= title %></title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+		<!-- <link rel='stylesheet' href='/stylesheets/grid.css' /> -->
+		<link rel='stylesheet' href='/stylesheets/font-awesome.css' />
+		<!-- <link rel='stylesheet' href="/node_modules/angular-material/angular-material.css"></script> -->
+		<link rel="stylesheet" type="text/css" href="dist/semantic.css">
+
+  <!-- <script src="assets/library/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="dist/components/visibility.js"></script>
+  <script src="dist/components/sidebar.js"></script>
+  <script src="dist/semantic.js"></script>
+  <script src="assets/main.js"></script>
+	</head>
+	<body>
+
+		<navbar></navbar>
+		<ng-view></ng-view>
+
+		<!-- Libraries -->
+		<!-- Angular Material Dependencies -->
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
+		<!-- Angular Material Javascript now available via Google CDN; version 0.9.4 used here -->
+		<!-- <script src="/node_modules/angular-material/angular-material.js"></script> -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+		
+		<script type="text/javascript" src="/app.js"></script>
+		<script type="text/javascript" src="/components.js"></script>
+		<script type="text/javascript" src="/routes.js"></script>
+
+		<!-- Controllers -->
+		<script type="text/javascript" src="/controllers/ProgramController.js"></script>
+		<script type="text/javascript" src="/controllers/ProgramDetailController.js"></script>
+		<script type="text/javascript" src="/controllers/ProfileController.js"></script>
+
+		<!-- Services -->
+		<script type="text/javascript" src="/services/programs.js"></script>
+
+		<!-- Directives -->
+		<script type="text/javascript" src="/directives/emitLastRepeaterElement.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.8/angular-filter.min.js"></script>
+		
+	</body>
+</html>

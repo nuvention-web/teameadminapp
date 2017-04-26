@@ -1,0 +1,80 @@
+<div class="ui container">
+    <div class="ui one column centered grid">
+        <div class="column">
+            <div class="ui action left icon input">
+                <i class="search icon"></i>
+                <input name="search" placeholder="Search..." type="text" ng-model="query">
+                <div class="ui blue button">Search</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui container">
+    <div class="ui three column grid">
+        <div class="ui shape column" ng-repeat="program in programs | filter: query" emit-last-repeater-element>
+            <div class="ui sides">
+                <div class="active side">
+                    <div class="ui special cards">
+                        <div class="card">
+                            <div class="blurring dimmable image">
+                                <div class="ui dimmer">
+                                    <div class="content">
+                                        <!-- <div class="ui mini list" ng-if="program.course_data != []">
+							<div class="item" ng-repeat="course in program.course_data | unique: 'course_id' | orderBy: 'course_id'">{{course.subject}} {{course.catalog_num}}: {{course.title}}
+							</div>
+						</div> -->
+                                        <div class="center">
+                                            <div class="ui secondary button">See Classes (TESTING!!!!!) <i class="fa fa-caret-right"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <img src="assets/images/wireframe/image-square.png">
+                            </div>
+                            <div class="content">
+                                <a class="header">{{program.program}}</a>
+                                <div class="meta">
+                                    <span class="group">{{program.location}}</span>
+                                </div>
+                                <div class="description">
+                                    <span ng-repeat="time in program.times">
+						<span ng-repeat="(day,hours) in time"> {{day}} </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="extra content">
+                                <div class="right floated author">
+                                    <a class="flip-over">
+        
+        See courses <i class="fa fa-angle-right"></i>
+      </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="side">
+                    <div class="ui card">
+                        <div class="content">
+                            <a class="header">Courses</a>
+                            <div class="description">
+                                <div class="ui mini list" ng-if="program.course_data != []">
+                                    <div class="item" ng-repeat="course in program.course_data | unique: 'course_id' | orderBy: 'course_id'">{{course.subject}} {{course.catalog_num}}: {{course.title}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="extra content">
+                            <div class="right floated author">
+                                <a class="button flip-over">
+        
+        See courses <i class="fa fa-angle-right"></i>
+      </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="assets/main.js"></script>
