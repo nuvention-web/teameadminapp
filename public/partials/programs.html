@@ -7,9 +7,9 @@
 }(window,document,'script'));
 </script>
 
-<div id="embed-api-auth-container"></div>
-<div id="chart-container"></div>
-<div id="view-selector-container"></div>
+<div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="chart-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="view-selector-container" style="margin-left:5%; margin-right:5%;"></div>
 
 <script>
 
@@ -45,16 +45,17 @@ gapi.analytics.ready(function() {
    */
   var dataChart = new gapi.analytics.googleCharts.DataChart({
     query: {
-      metrics: 'ga:sessions',
-      dimensions: 'ga:date',
-      'start-date': '30daysAgo',
-      'end-date': 'yesterday'
+      metrics: 'ga:totalEvents',
+      dimensions: 'ga:eventaction',
+      sort: '-ga:totalEvents',
+      'start-date': 'today',
+      'end-date': 'today'
     },
     chart: {
       container: 'chart-container',
-      type: 'LINE',
+      type: 'COLUMN',
       options: {
-        width: '100%'
+        width: '90%'
       }
     }
   });
