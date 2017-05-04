@@ -48,8 +48,9 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': 'today',
-      'end-date': 'today'
+      filters: 'ga:eventCategory!=\'Search\'',
+      'start-date': 'yesterday',
+      'end-date': 'yesterday'
     },
     chart: {
       container: 'chart-container',
