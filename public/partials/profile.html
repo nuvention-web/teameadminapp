@@ -1,3 +1,5 @@
+
+<!--
 <div class="ui container">
     <div class="ui grid">
         <div class="eight wide column">
@@ -8,27 +10,33 @@
                     <tbody>
                         <tr>
                             <td>Name:</td>
-                            <td>{{user.firstname}} {{user.lastname}}</td>
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><a href="mailto:info@support.com"> {{user.email}}</a></td>
                         </tr>
                         <tr>
                             <td>Date of Birth:</td>
-                            <td>{{user.birthday}}</td>
                         </tr>
                         <tr>
                             <td>Graduation:</td>
-                            <td>{{user.graduation}}</td>
                         </tr>
                         <tr>
                             <td>Major:</td>
-                            <td>{{user.school}} - {{user.major}}</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+    </div>
+</div>
+-->
+<div class="col-xs-12 col-sm-6">
+    <div class="row end-sm center-xs middle-xs">
+        <select class="ui dropdown clear-school" ng-model="schoolFilter"><i class="dropdown icon"></i>
+            <option class="item" value="" selected>Select School</option>
+            <option value="Weinberg College of Arts and Sciences">Weinberg</option>
+            <option value="McCormick School of Engineering and Applied Science">McCormick</option>
+        </select>
+        <div class="margin-left ui button clear-school">Clear</div>
     </div>
 </div>
