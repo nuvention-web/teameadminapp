@@ -73,7 +73,6 @@ gapi.analytics.ready(function() {
 
   /**
    * Render the dataChart on the page whenever a new view is selected.
-         filters: 'ga:eventLabel=='+document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text,
    */
   viewSelector.on('change', function(ids) {
     dataChart.set({query: {ids: ids}}).execute();
