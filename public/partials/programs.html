@@ -70,7 +70,8 @@ gapi.analytics.ready(function() {
       container: 'chart-container',
       type: 'COLUMN',
       options: {
-        width: '90%'
+        width: '90%',
+        title: 'All Majors search results'
       }
     }
   });
@@ -94,7 +95,7 @@ function reDraw() {
         },
         chart: {
           options: {
-            title: newMajor
+            title: newMajor+' search results'
           }
         }
       };
@@ -108,7 +109,7 @@ function reDraw() {
         },
         chart: {
           options: {
-            title: newMajor
+            title: 'All Majors search results'
           }
         }
       };
