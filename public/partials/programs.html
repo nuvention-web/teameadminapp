@@ -75,6 +75,9 @@ gapi.analytics.ready(function() {
       options: {
         width: '90%',
         title: 'All Majors search results',
+        height: 400,
+        hAxis: {title: 'Search String', titleTextStyle: {fontSize: 17}},
+        vAxis: {format: 'decimal'},
         legend : { position:"none"}
       }
     }
@@ -122,6 +125,8 @@ gapi.analytics.ready(function() {
       options: {
         width: '90%',
         title: 'All Majors link clicks',
+        height: 400,
+        hAxis: {title: 'Link Name', titleTextStyle: {fontSize: 17}},
         legend : { position:"none"}
       }
     }
