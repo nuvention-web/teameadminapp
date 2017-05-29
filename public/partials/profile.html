@@ -24,10 +24,12 @@
     </div>
 </div>
 <div class="container-fluid padding-bottom extra-padding-sides">
+
     <div class="row">
         <div class="col-xs-6 col-sm-4" id="program-col" ng-repeat="program in ranked_programs | filter: search | filter: schoolFilter| orderBy:'-rank'" emit-last-repeater-element>
             <div class="ui card">
                 <div class="content">
+
                     <a class="header" target="_blank" href="{{program.link}}" ng-click="trackInfo(program)">{{program.program}}</a>
                     <div class="meta">
                         <span class="group" ng-repeat="s in program.school">{{s}}{{$last ? '' : ','}}</span>
