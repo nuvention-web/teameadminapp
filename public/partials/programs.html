@@ -15,6 +15,8 @@
           <option value="African American Studies">African American Studies</option>
                 </select>
 
+Start Date: <input type="date" name="startDate" value="2017-05-01">
+End Date: <input type="date" name="endDate" min="2017-05-20">
 </div>
 
 <div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
@@ -64,7 +66,7 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '6daysAgo',
+      'start-date': '2017-01-01',
       'end-date': 'today',
       'max-results': '10',
       filters: 'ga:eventCategory==Search'
@@ -114,7 +116,7 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '6daysAgo',
+      'start-date': '2017-01-01',
       'end-date': 'today',
       'max-results': '10',
       filters: 'ga:eventCategory==Click'
