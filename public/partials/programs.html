@@ -13,10 +13,10 @@
               <option value="All Majors" selected="selected">All Majors</option>
           <option value="computer science (bs)">computer science (bs)</option>
           <option value="African American Studies">African American Studies</option>
-                </select>
+                </select><br><br>
 
-Start Date: <input type="date" name="startDate" value="2017-05-01">
-End Date: <input type="date" name="endDate" min="2017-05-20">
+Start Date: <input type="date" id="startDate" value="2017-05-01" onchange="reDraw2()">
+End Date: <input type="date" id="endDate" value="2017-05-20">
 </div>
 
 <div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
@@ -207,4 +207,20 @@ function reDraw() {
       dataChart2.set(options4).execute();
   }
 }
+
+function reDraw2() {
+	var startDateValue=document.getElementById("startDate").value;
+	var options1 = {
+		query: {
+          filters: 'ga:eventCategory==Search'
+        },
+        chart: {
+          options: {
+            'start-date': startDateValue.toString()
+          }
+        }
+      };
+      dataChart.set(options1).execute();
+}
+
 </script>
