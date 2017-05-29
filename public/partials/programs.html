@@ -1,3 +1,13 @@
+<div style="margin-left:5%; margin-right:5%;">Select Major: <select id="majorName" onchange="reDraw()">Select Major
+ <option value="All Majors" selected="selected">All Majors</option>
+  <option value="computer science (bs)">computer science (bs)</option>
+  <option value="African American Studies">African American Studies</option>
+</select></div>
+
+<div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="chart-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="view-selector-container" style="margin-left:5%; margin-right:5%;"></div>
+
 <script>
 (function(w,d,s,g,js,fs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
@@ -7,13 +17,14 @@
 }(window,document,'script'));
 </script>
 
-<div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
-<div id="chart-container" style="margin-left:5%; margin-right:5%;"></div>
-<div id="view-selector-container" style="margin-left:5%; margin-right:5%;"></div>
-
 <script>
 
+var dataChart;
+var currentMajor="";
+
 gapi.analytics.ready(function() {
+
+  currentMajor=document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text;
 
   /**
    * Authorize the user immediately if the user has already granted access.
@@ -24,7 +35,6 @@ gapi.analytics.ready(function() {
     container: 'embed-api-auth-container',
     clientid: '608029080727-pus9sscp6qp2mqp2jv5rdapk4prtssmo.apps.googleusercontent.com'
   });
-
 
   /**
    * Create a new ViewSelector instance to be rendered inside of an
@@ -37,20 +47,20 @@ gapi.analytics.ready(function() {
   // Render the view selector to the page.
   viewSelector.execute();
 
-
   /**
    * Create a new DataChart instance with the given query parameters
    * and Google chart options. It will be rendered inside an element
    * with the id "chart-container".
    */
-  var dataChart = new gapi.analytics.googleCharts.DataChart({
+  dataChart = new gapi.analytics.googleCharts.DataChart({
     query: {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      filters: 'ga:eventCategory!=\'Search\'',
-      'start-date': 'yesterday',
-      'end-date': 'yesterday'
+      'start-date': '5daysAgo',
+      'end-date': 'today',
+      'max-results': '10',
+      filters: 'ga:eventCategory==Search'
     },
     chart: {
       container: 'chart-container',
@@ -61,14 +71,46 @@ gapi.analytics.ready(function() {
     }
   });
 
-
   /**
    * Render the dataChart on the page whenever a new view is selected.
+         filters: 'ga:eventLabel=='+document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text,
    */
   viewSelector.on('change', function(ids) {
     dataChart.set({query: {ids: ids}}).execute();
   });
 
 });
-</script>
 
+function reDraw() {
+  var newMajor=document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text;
+  if (newMajor!="All Majors")
+  {
+      var options = {
+        query: {
+          filters: 'ga:eventCategory==Search;ga:eventLabel==' + newMajor
+        },
+        chart: {
+          options: {
+            title: newMajor
+          }
+        }
+      };
+      dataChart.set(options).execute();
+  }
+  else
+  {
+          var options = {
+        query: {
+          filters: 'ga:eventCategory==Search'
+        },
+        chart: {
+          options: {
+            title: newMajor
+          }
+        }
+      };
+      dataChart.set(options).execute();
+  }
+}
+
+</script>
