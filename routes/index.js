@@ -35,7 +35,7 @@ router.get('/programs', function(req, res){
 });
 
 router.post('/signup', passport.authenticate('local-signup', {
-  successRedirect: '/profile',
+  successRedirect: '/programs',
   failureRedirect: '/signup',
   failureFlash: true,
   })
@@ -43,7 +43,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 
 
 router.post('/login', passport.authenticate('local-login', {
-  successRedirect: '/profile',
+  successRedirect: '/programs',
   failureRedirect: '/login',
   failureFlash: true,
 }));

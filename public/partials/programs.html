@@ -1,13 +1,3 @@
-<div style="margin-left:5%; margin-right:5%;">Select Major: <select id="majorName" onchange="reDraw()">Select Major
- <option value="All Majors" selected="selected">All Majors</option>
-  <option value="computer science (bs)">computer science (bs)</option>
-  <option value="African American Studies">African American Studies</option>
-</select></div>
-
-<div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
-<div id="chart-container" style="margin-left:5%; margin-right:5%;"></div>
-<div id="view-selector-container" style="margin-left:5%; margin-right:5%;"></div>
-
 <script>
 (function(w,d,s,g,js,fs){
   g=w.gapi||(w.gapi={});g.analytics={q:[],ready:function(f){this.q.push(f);}};
@@ -16,6 +6,23 @@
   fs.parentNode.insertBefore(js,fs);js.onload=function(){g.load('analytics');};
 }(window,document,'script'));
 </script>
+
+<br>
+<div style="margin-left:5%; margin-right:5%;">
+                Select by major: <select class="ui dropdown clear-school" id="majorName" onchange="reDraw()"><i class="dropdown icon"></i>
+              <option value="All Majors" selected="selected">All Majors</option>
+          <option value="computer science (bs)">computer science (bs)</option>
+          <option value="African American Studies">African American Studies</option>
+                </select>
+
+</div>
+
+<div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="chart-container" style="margin-left:5%; margin-right:5%;"></div>
+<div id="view-selector-container" style="margin-left:5%; margin-right:5%;"></div>
+
+<div id="chart-container-2" style="margin-left:5%; margin-right:5%;"></div>
+<div id="view-selector-container-2" style="margin-left:5%; margin-right:5%;"></div>
 
 <script>
 
@@ -57,7 +64,7 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '5daysAgo',
+      'start-date': '6daysAgo',
       'end-date': 'today',
       'max-results': '10',
       filters: 'ga:eventCategory==Search'
@@ -66,18 +73,74 @@ gapi.analytics.ready(function() {
       container: 'chart-container',
       type: 'COLUMN',
       options: {
-        width: '90%'
+        width: '90%',
+        title: 'All Majors search results',
+        height: 400,
+        hAxis: {title: 'Search String', titleTextStyle: {fontSize: 17}},
+        vAxis: {format: 'decimal'},
+        legend : { position:"none"}
       }
     }
   });
 
   /**
    * Render the dataChart on the page whenever a new view is selected.
-         filters: 'ga:eventLabel=='+document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text,
    */
   viewSelector.on('change', function(ids) {
     dataChart.set({query: {ids: ids}}).execute();
   });
+
+
+/**************/
+
+  /**
+   * Create a new ViewSelector instance to be rendered inside of an
+   * element with the id "view-selector-container".
+   */
+  var viewSelector2 = new gapi.analytics.ViewSelector({
+    container: 'view-selector-container-2'
+  });
+
+  // Render the view selector to the page.
+  viewSelector2.execute();
+
+  /**
+   * Create a new DataChart instance with the given query parameters
+   * and Google chart options. It will be rendered inside an element
+   * with the id "chart-container".
+   */
+  dataChart2 = new gapi.analytics.googleCharts.DataChart({
+    query: {
+      metrics: 'ga:totalEvents',
+      dimensions: 'ga:eventaction',
+      sort: '-ga:totalEvents',
+      'start-date': '6daysAgo',
+      'end-date': 'today',
+      'max-results': '10',
+      filters: 'ga:eventCategory==Click'
+    },
+    chart: {
+      container: 'chart-container-2',
+      type: 'COLUMN',
+      options: {
+        width: '90%',
+        title: 'All Majors link clicks',
+        height: 400,
+        hAxis: {title: 'Link Name', titleTextStyle: {fontSize: 17}},
+        legend : { position:"none"}
+      }
+    }
+  });
+
+  /**
+   * Render the dataChart on the page whenever a new view is selected.
+   */
+  viewSelector2.on('change', function(ids) {
+    dataChart2.set({query: {ids: ids}}).execute();
+  });
+
+
+
 
 });
 
@@ -85,32 +148,61 @@ function reDraw() {
   var newMajor=document.getElementById("majorName").options[document.getElementById("majorName").selectedIndex].text;
   if (newMajor!="All Majors")
   {
-      var options = {
+      var options1 = {
         query: {
           filters: 'ga:eventCategory==Search;ga:eventLabel==' + newMajor
         },
         chart: {
           options: {
-            title: newMajor
+            title: newMajor+' search results'
           }
         }
       };
-      dataChart.set(options).execute();
+      dataChart.set(options1).execute();
   }
   else
   {
-          var options = {
+          var options2 = {
         query: {
           filters: 'ga:eventCategory==Search'
         },
         chart: {
           options: {
-            title: newMajor
+            title: 'All Majors search results'
           }
         }
       };
-      dataChart.set(options).execute();
+      dataChart.set(options2).execute();
+  }
+
+
+  if (newMajor!="All Majors")
+  {
+      var options3 = {
+        query: {
+          filters: 'ga:eventCategory==Click;ga:eventLabel==' + newMajor
+        },
+        chart: {
+          options: {
+            title: newMajor+' link clicks'
+          }
+        }
+      };
+      dataChart2.set(options3).execute();
+  }
+  else
+  {
+          var options4 = {
+        query: {
+          filters: 'ga:eventCategory==Click'
+        },
+        chart: {
+          options: {
+            title: 'All Majors link clicks'
+          }
+        }
+      };
+      dataChart2.set(options4).execute();
   }
 }
-
 </script>
