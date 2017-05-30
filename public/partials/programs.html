@@ -16,7 +16,7 @@
                 </select><br><br>
 
 Start Date: <input type="date" id="startDate" value="2017-05-01" onchange="reDraw2()">
-End Date: <input type="date" id="endDate" value="2017-05-20" onchange="reDraw3()">
+End Date: <input type="date" id="endDate" value="2017-05-30" onchange="reDraw3()">
 </div>
 
 <div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
@@ -117,8 +117,8 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '2017-01-01',
-      'end-date': 'today',
+      'start-date': '2017-05-01',
+      'end-date': '2017-05-30',
       'max-results': '10',
       filters: 'ga:eventCategory==Click'
     },
@@ -179,7 +179,6 @@ function reDraw() {
       dataChart.set(options2).execute();
   }
 
-
   if (newMajor!="All Majors")
   {
       var options3 = {
@@ -212,32 +211,24 @@ function reDraw() {
 
 function reDraw2() {
 	var startDateValue=document.getElementById("startDate").value;
-	var options1 = {
-		query: {
-          filters: 'ga:eventCategory==Search'
-        },
-        chart: {
-          options: {
-            'start-date': startDateValue.toString()
-          }
+          var options1 = {
+        query: {
+          'start-date': startDateValue
         }
       };
       dataChart.set(options1).execute();
+      dataChart2.set(options1).execute();
 }
 
 function reDraw3() {
 	var endDateValue=document.getElementById("endDate").value;
-	var options1 = {
-		query: {
-          filters: 'ga:eventCategory==Search'
-        },
-        chart: {
-          options: {
-            'end-date': startDateValue.toString()
-          }
+    var options1 = {
+        query: {
+          'end-date': endDateValue
         }
       };
       dataChart.set(options1).execute();
+      dataChart2.set(options1).execute();
 }
 
 </script>
