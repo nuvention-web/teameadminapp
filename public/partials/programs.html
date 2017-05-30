@@ -13,8 +13,10 @@
               <option value="All Majors" selected="selected">All Majors</option>
           <option value="computer science (bs)">computer science (bs)</option>
           <option value="African American Studies">African American Studies</option>
-                </select>
+                </select><br><br>
 
+Start Date: <input type="date" id="startDate" value="2017-05-01" onchange="reDraw2()">
+End Date: <input type="date" id="endDate" value="2017-05-20" onchange="reDraw3()">
 </div>
 
 <div id="embed-api-auth-container" style="margin-left:5%; margin-right:5%;"></div>
@@ -64,7 +66,7 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '6daysAgo',
+      'start-date': '2017-01-01',
       'end-date': 'today',
       'max-results': '10',
       filters: 'ga:eventCategory==Search'
@@ -78,7 +80,8 @@ gapi.analytics.ready(function() {
         height: 400,
         hAxis: {title: 'Search String', titleTextStyle: {fontSize: 17}},
         vAxis: {format: 'decimal'},
-        legend : { position:"none"}
+        legend : { position:"none"},
+        colors: ["#99E1D9"]
       }
     }
   });
@@ -114,7 +117,7 @@ gapi.analytics.ready(function() {
       metrics: 'ga:totalEvents',
       dimensions: 'ga:eventaction',
       sort: '-ga:totalEvents',
-      'start-date': '6daysAgo',
+      'start-date': '2017-01-01',
       'end-date': 'today',
       'max-results': '10',
       filters: 'ga:eventCategory==Click'
@@ -127,7 +130,8 @@ gapi.analytics.ready(function() {
         title: 'All Majors link clicks',
         height: 400,
         hAxis: {title: 'Link Name', titleTextStyle: {fontSize: 17}},
-        legend : { position:"none"}
+        legend : { position:"none"},
+        colors: ["#99E1D9"]
       }
     }
   });
@@ -205,4 +209,35 @@ function reDraw() {
       dataChart2.set(options4).execute();
   }
 }
+
+function reDraw2() {
+	var startDateValue=document.getElementById("startDate").value;
+	var options1 = {
+		query: {
+          filters: 'ga:eventCategory==Search'
+        },
+        chart: {
+          options: {
+            'start-date': startDateValue.toString()
+          }
+        }
+      };
+      dataChart.set(options1).execute();
+}
+
+function reDraw3() {
+	var endDateValue=document.getElementById("endDate").value;
+	var options1 = {
+		query: {
+          filters: 'ga:eventCategory==Search'
+        },
+        chart: {
+          options: {
+            'end-date': startDateValue.toString()
+          }
+        }
+      };
+      dataChart.set(options1).execute();
+}
+
 </script>
